@@ -1,0 +1,95 @@
+<project name="MyProject" default="all" basedir=".">
+    <description>
+        A simple build script.
+    </description>
+  <!-- set global properties for this build -->
+  <!-- set glassfish.home to point to glassfish installation  -->  
+  <property environment="env"/>
+  <property name="glassfish.home" value="${env.GLASSFISH_HOME}"/>
+
+  <property name="beans" value="fr/mail/beans"/>
+  <property name="ejb" value="fr/mail/ejb"/>
+  <property name="client" value="fr/mail/client"/>
+  <property name="compile" value="compile"/>
+
+  <target name="init">
+    <!-- Create the build directory structure -->
+    <mkdir dir="${compile}/${beans}"/>
+    <mkdir dir="${compile}/${ejb}"/>
+    <mkdir dir="${compile}/${client}"/>
+    <mkdir dir="${compile}/${compile}"/>
+  </target>
+
+  <target name="all">
+    <antcall target="clean"/>
+    <antcall target="build"/>
+    <antcall target="deploy"/>
+  </target>
+
+  <target name="build" description="build" depends="init">
+    <antcall target="build-beans"/>
+    <antcall target="build-ejb"/>
+    <antcall target="build-client"/>
+    <antcall target="build-jar"/>
+  </target>
+
+  <target name="build-beans"
+        description="Build entity beans" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar" 
+           srcdir="src/fr/mail/beans"
+           destdir="${compile}"
+           includes="*"/>
+  </target>
+
+  <target name="build-ejb"
+        description="Build ejb jar" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar:./entities.jar" 
+           srcdir="src/fr/mail/ejb"
+           destdir="${compile}"
+           includes="*"/>
+  </target>
+
+  <target name="build-client" 
+        description="Build client jar" >
+    <javac classpath="${glassfish.home}/lib/javaee.jar" 
+           srcdir="src/fr/mail/client"
+           destdir="${compile}"
+           includes="*"/>
+  </target>
+  
+  <target name="build-jar" 
+        description="Build jar archive" >
+    <jar destfile="mailBox.jar"
+         basedir="."
+	 includes="META-INF/persistence.xml,client/,ejb/,beans/"/>
+  </target>
+
+
+  <target name="deploy" 
+          description="deploy">
+    <exec executable="${glassfish.home}/bin/asadmin" 
+          failonerror="true" 
+          vmlauncher="false">
+      <arg line="deploy --retrieve . mailBox.jar"/>
+    </exec>
+  </target>
+
+  <target name="undeploy" 
+          description="undeploy">
+    <exec executable="${glassfish.home}/bin/asadmin" 
+          failonerror="true" 
+          vmlauncher="false">
+      <arg line="undeploy mailBox"/>
+    </exec>
+  </target>
+
+  <target name="clean" 
+          description="clean up" >
+    <delete file="mailBox.jar"/>
+    <delete dir="${beans}"/>
+    <delete dir="${ejb}"/>
+    <delete dir="${client}"/>
+    <delete dir="${compile}"/>
+  </target>
+
+</project>
