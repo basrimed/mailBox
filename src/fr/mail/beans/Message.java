@@ -12,28 +12,35 @@ import javax.persistence.Id;
 @Entity(name = "Message")
 public class Message {
 
+	@ManyToOne
+	@JoinColumn(name = "idBox", referencedColumnName="id")
+	private Box box;
+
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
 	@Column(name = "id")
-	public long id;
+	private long id;
 
 	@Column(name = "senderName")
-	public String senderName;
+	private String senderName;
 
 	@Column(name = "receiverName")
-	public String receiverName;
+	private String receiverName;
 
 	@Column(name = "sendingDate")
-	public Date sendingDate;
+	private Date sendingDate;
 
 	@Column(name = "subject")
-	public String subject;
+	private String subject;
 
 	@Column(name = "body")
-	public String body;
+	private String body;
 
 	@Column(name = "alreadyRead")
-	public boolean alreadyRead;
+	private boolean alreadyRead;
+
+
+	
 	
 	
 		
@@ -102,6 +109,16 @@ public class Message {
 
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+
+	public Box getBox() {
+		return this.box;
+	}
+
+
+	public void setBox(Box box) {
+		this.box = box;
 	}
 
 	
