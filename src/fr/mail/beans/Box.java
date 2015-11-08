@@ -2,11 +2,9 @@ package fr.mail.beans;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Collection;
+import javax.persistence.*;
+
 
 
 @Entity(name = "Box")
@@ -20,7 +18,7 @@ public class Box {
 	@Column(name = "boxName")
 	private String boxName;
 
-	@OneToMany(cascade=ALL, mappedBy="box")
+	@OneToMany(mappedBy="box")
 	private Collection <Message> messages;
 	
 		
