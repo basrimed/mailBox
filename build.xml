@@ -14,10 +14,10 @@
 
   <target name="init">
     <!-- Create the build directory structure -->
+    <mkdir dir="${compile}"/>
     <mkdir dir="${compile}/${beans}"/>
     <mkdir dir="${compile}/${ejb}"/>
     <mkdir dir="${compile}/${client}"/>
-    <mkdir dir="${compile}/${compile}"/>
   </target>
 
   <target name="all">
@@ -61,7 +61,7 @@
         description="Build jar archive" >
     <jar destfile="mailBox.jar"
          basedir="."
-	 includes="META-INF/persistence.xml,client/,ejb/,beans/"/>
+	 includes="META-INF/persistence.xml,${compile}/${beans}/,${compile}/${client},${compile}/${ejb}"/>
   </target>
 
 
