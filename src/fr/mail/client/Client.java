@@ -10,7 +10,7 @@ import java.util.List;
 import fr.mail.ejb.*;
 import fr.mail.beans.*;
 
-public class JavaClient {
+public class Client {
 	public static void main(String args[]) {
 
 
