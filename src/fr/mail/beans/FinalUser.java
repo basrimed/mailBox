@@ -27,8 +27,17 @@ public class FinalUser {
 		this.setUserName(userName);
 	}
 
+
+
+	public void setId(long id){
+		this.id=id;
+	}
+	 
+	public long getId(){
+		return this.id;
+	} 	
 	
-	
+
 	public String getUserName() {
 		return userName;
 	}

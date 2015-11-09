@@ -14,10 +14,9 @@
 
   <target name="init">
     <!-- Create the build directory structure -->
-    <mkdir dir="${compile}"/>
-    <mkdir dir="${compile}/${beans}"/>
-    <mkdir dir="${compile}/${ejb}"/>
-    <mkdir dir="${compile}/${client}"/>
+    <mkdir dir="${beans}"/>
+    <mkdir dir="${ejb}"/>
+    <mkdir dir="${client}"/>
   </target>
 
   <target name="all">
@@ -37,7 +36,7 @@
         description="Build entity beans" >
     <javac classpath="${glassfish.home}/lib/javaee.jar" 
            srcdir="src/fr/mail/beans"
-           destdir="${compile}"
+           destdir="."
            includes="*"/>
   </target>
 
@@ -45,7 +44,7 @@
         description="Build ejb jar" >
     <javac classpath="${glassfish.home}/lib/javaee.jar:./entities.jar" 
            srcdir="src/fr/mail/ejb"
-           destdir="${compile}"
+           destdir="."
            includes="*"/>
   </target>
 
@@ -53,7 +52,7 @@
         description="Build client jar" >
     <javac classpath="${glassfish.home}/lib/javaee.jar" 
            srcdir="src/fr/mail/client"
-           destdir="${compile}"
+           destdir="."
            includes="*"/>
   </target>
   
@@ -61,7 +60,11 @@
         description="Build jar archive" >
     <jar destfile="mailBox.jar"
          basedir="."
-	 includes="META-INF/persistence.xml,${compile}/${beans}/,${compile}/${client},${compile}/${ejb}"/>
+	 includes="META-INF/persistence.xml,${beans}/,${client}/,${ejb}/">
+            <manifest>
+                <attribute name="Main-Class" value="${ejb}.Main"/>
+            </manifest>
+</jar>
   </target>
 
 
@@ -89,7 +92,6 @@
     <delete dir="${beans}"/>
     <delete dir="${ejb}"/>
     <delete dir="${client}"/>
-    <delete dir="${compile}"/>
   </target>
 
 </project>

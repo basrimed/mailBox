@@ -1,4 +1,4 @@
-package fr.mail.manager;
+package fr.mail.ejb;
 
 import fr.mail.beans.*;
 
@@ -9,10 +9,18 @@ import javax.persistence.*;
 import java.sql.Date;
 
 
-@Stateless
+@Stateless(name="fr/mail/ejb/MailBoxManagerInterface")
 public class MailBoxManager implements MailBoxManagerInterface{
 
+	@PersistenceContext(unitName="pu1")
+    	private EntityManager em;
 
+
+	public void MailBoxManager(){
+
+
+	}
+	
 
 	public List<Message> readAUserNewMessages(long id){
 
@@ -50,6 +58,9 @@ public class MailBoxManager implements MailBoxManagerInterface{
 
 	public void addUser(String userName){
 
+	FinalUser finalUser = new FinalUser(userName);
+
+	em.persist(finalUser);
 
 	}
 

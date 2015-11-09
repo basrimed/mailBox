@@ -1,4 +1,4 @@
-package fr.mail.manager;
+package fr.mail.ejb;
 
 import fr.mail.beans.*;
 
