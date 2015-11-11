@@ -27,12 +27,18 @@ public class Box {
 		super();
 	}
 
+	public Box(String boxName) {
+		super();
+		this.setBoxName(boxName);
+	}
 
 	public Box(long id, String boxName) {
 		super();
-		this.id = id;
-		this.boxName = boxName;
+		this.setId(id);
+		this.setBoxName(boxName);
 	}
+
+
 
 
 	

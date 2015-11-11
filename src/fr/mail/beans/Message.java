@@ -48,15 +48,43 @@ public class Message {
 
 
 	public Message(String senderName, String receiverName, Date sendingDate, String subject, String body,
+			boolean alreadyRead,Box box) {
+		super();
+		this.setBox(box);
+		this.setSenderName(senderName);
+		this.setReceiverName(receiverName);
+		this.setSendingDate(sendingDate);
+		this.setSubject(subject);
+		this.setBody(body);
+		this.setAlreadyRead(alreadyRead);
+	}
+
+
+	public Message(String senderName, String receiverName, Date sendingDate, String subject, String body,
 			boolean alreadyRead) {
 		super();
-		this.senderName = senderName;
-		this.receiverName = receiverName;
-		this.sendingDate = sendingDate;
-		this.subject = subject;
-		this.body = body;
-		this.alreadyRead = alreadyRead;
+		this.setId(id);
+		this.setBox(box);
+		this.setSenderName(senderName);
+		this.setReceiverName(receiverName);
+		this.setSendingDate(sendingDate);
+		this.setSubject(subject);
+		this.setBody(body);
+		this.setAlreadyRead(alreadyRead);
 	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 
 
 	public String getSenderName() {

@@ -21,6 +21,13 @@ public class FinalUser {
 	public FinalUser() {
 		super();
 	}
+
+
+	public FinalUser(long id,String userName) {
+		super();
+		this.setId(id);
+		this.setUserName(userName);
+	}
 	
 	public FinalUser(String userName) {
 		super();
