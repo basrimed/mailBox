@@ -13,12 +13,13 @@ import javax.persistence.*;
 @Remote 
 public interface MailBoxManagerInterface {
 	
-	public List<Message> readAUserNewMessages(long id);
-	public List<Message> readAUserAllMessages(long id);
+	public List <Object[]> readAUserNewMessages(String receiverName);
+	public List <Object[]> readAUserAllMessages(String receiverName);
 	public void deleteAUserMessage(long id);
-	public void deleteAUserReadMessages(long id);
-	public void sendAMessageToBox(String senderName,String receiverName, String subject, String body, boolean alreadyRead);
+	public void deleteAUserReadMessages(String receiverName);
+	public void sendAMessageToBox(String senderName,String receiverName, String subject, String body, long idBox);
 	public void addUser(String userName);
 	public void removeUser(long id);
+	public void addBox(String boxName);
 	/* partie 2 du projet*/ //public void sendNews(/**/);
 }

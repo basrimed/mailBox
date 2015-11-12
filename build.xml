@@ -22,6 +22,7 @@
   <target name="all">
     <antcall target="clean"/>
     <antcall target="build"/>
+    <antcall target="undeploy"/>
     <antcall target="deploy"/>
   </target>
 
@@ -64,7 +65,7 @@
             <manifest>
                 <attribute name="Main-Class" value="${ejb}.Main"/>
             </manifest>
-</jar>
+    </jar>
   </target>
 
 
@@ -92,6 +93,7 @@
     <delete dir="${beans}"/>
     <delete dir="${ejb}"/>
     <delete dir="${client}"/>
+    <delete dir="fr/"/>
   </target>
 
 </project>

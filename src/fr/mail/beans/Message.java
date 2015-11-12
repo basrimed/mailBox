@@ -56,7 +56,7 @@ public class Message {
 		this.setSendingDate(sendingDate);
 		this.setSubject(subject);
 		this.setBody(body);
-		this.setAlreadyRead(alreadyRead);
+		this.alreadyRead=false;
 	}
 
 
@@ -70,7 +70,7 @@ public class Message {
 		this.setSendingDate(sendingDate);
 		this.setSubject(subject);
 		this.setBody(body);
-		this.setAlreadyRead(alreadyRead);
+		this.alreadyRead=false;
 	}
 
 
