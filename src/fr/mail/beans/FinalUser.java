@@ -1,11 +1,11 @@
 package fr.mail.beans;
-
+import java.io.Serializable;
 
 import javax.persistence.*;
 
 
 @Entity(name = "FinalUser")
-public class FinalUser {
+public class FinalUser implements Serializable{
 	
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
@@ -14,6 +14,12 @@ public class FinalUser {
 
 	@Column(name = "userName")
 	private String userName ;
+
+	@Column(name = "readRightGroup")
+	private boolean readRightGroup;
+
+	@Column(name = "writeRightGroup")
+	private boolean writeRightGroup;
 
 	
 	
@@ -51,6 +57,25 @@ public class FinalUser {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+
+
+	public boolean getReadRightGroup() {
+		return readRightGroup;
+	}
+
+	public void updateReadRightGroup(boolean readRightGroup) {
+		this.readRightGroup = readRightGroup;
+	}
+
+
+	public boolean getWriteRightGroup() {
+		return writeRightGroup;
+	}
+
+	public void updateWriteRightGroup(boolean writeRightGroup) {
+		this.writeRightGroup = writeRightGroup;
 	}
 	
 	

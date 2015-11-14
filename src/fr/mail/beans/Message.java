@@ -1,13 +1,13 @@
 package fr.mail.beans;
 
 import java.util.Date;
-
+import java.io.Serializable;
 import javax.persistence.*;
 
 
 
 @Entity(name = "Message")
-public class Message {
+public class Message implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "idBox", referencedColumnName="id")

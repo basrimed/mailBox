@@ -61,11 +61,7 @@
         description="Build jar archive" >
     <jar destfile="mailBox.jar"
          basedir="."
-	 includes="META-INF/persistence.xml,${beans}/,${client}/,${ejb}/">
-            <manifest>
-                <attribute name="Main-Class" value="${ejb}.Main"/>
-            </manifest>
-    </jar>
+	 includes="META-INF/persistence.xml,${beans}/,${client}/,${ejb}/"/>
   </target>
 
 

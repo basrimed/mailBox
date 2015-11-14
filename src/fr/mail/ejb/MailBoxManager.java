@@ -21,7 +21,7 @@ public class MailBoxManager implements MailBoxManagerInterface{
 	
 
 	public List <Object[]> readAUserNewMessages(String receiverName){
-		Query q = em.createQuery("select m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName and m.alreadyRead = :alreadyRead");
+		Query q = em.createQuery("select m.id, m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName and m.alreadyRead = :alreadyRead");
 		q.setParameter("receiverName",receiverName);
 		q.setParameter("alreadyRead",false);
         	List <Object[]> results = q.getResultList();
@@ -38,7 +38,7 @@ public class MailBoxManager implements MailBoxManagerInterface{
 
 
 	public List <Object[]> readAUserAllMessages(String receiverName){
-		Query q = em.createQuery("select  m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName");
+		Query q = em.createQuery("select  m.id, m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName");
 		q.setParameter("receiverName",receiverName);
         	List <Object[]> results = q.getResultList();
 
@@ -88,25 +88,6 @@ public class MailBoxManager implements MailBoxManagerInterface{
 
 	em.persist(message);
 	}
-
-
-
-	public void addUser(String userName){
-		FinalUser finalUser = new FinalUser(userName);
-		em.persist(finalUser);
-	}
-
-
-
-	public void removeUser(long id){
-		FinalUser finalUser = new FinalUser();
-		finalUser.setId(id);
-		finalUser=em.merge(finalUser);
-		em.remove(finalUser);
-	}
-
-
-
 
 
 	public void addBox(String boxName){

@@ -18,8 +18,6 @@ public interface MailBoxManagerInterface {
 	public void deleteAUserMessage(long id);
 	public void deleteAUserReadMessages(String receiverName);
 	public void sendAMessageToBox(String senderName,String receiverName, String subject, String body, long idBox);
-	public void addUser(String userName);
-	public void removeUser(long id);
 	public void addBox(String boxName);
 	/* partie 2 du projet*/ //public void sendNews(/**/);
 }

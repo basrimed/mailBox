@@ -1,14 +1,14 @@
 package fr.mail.beans;
 
 import java.util.Date;
-
+import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
 
 
 
 @Entity(name = "Box")
-public class Box {
+public class Box implements Serializable{
 
 	@Id
 	@GeneratedValue ( strategy = GenerationType.IDENTITY )
