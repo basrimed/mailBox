@@ -20,11 +20,11 @@ public class MailBoxManager implements MailBoxManagerInterface{
 	}
 	
 
-	public List <Object[]> readAUserNewMessages(String receiverName){
-		Query q = em.createQuery("select m.id, m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName and m.alreadyRead = :alreadyRead");
+	public List <Message> readAUserNewMessages(String receiverName){
+		Query q = em.createQuery("select m from Message m where m.receiverName = :receiverName and m.alreadyRead = :alreadyRead");
 		q.setParameter("receiverName",receiverName);
 		q.setParameter("alreadyRead",false);
-        	List <Object[]> results = q.getResultList();
+        	List <Message> results = q.getResultList();
 
 		Query q2 = em.createQuery("update Message m set m.alreadyRead = :alreadyRead where m.alreadyRead = :alreadyRead2 and m.receiverName = :receiverName");
 		q2.setParameter("alreadyRead",true);
@@ -37,10 +37,10 @@ public class MailBoxManager implements MailBoxManagerInterface{
 
 
 
-	public List <Object[]> readAUserAllMessages(String receiverName){
-		Query q = em.createQuery("select  m.id, m.senderName, m.sendingDate, m.subject, m.body from Message m where m.receiverName = :receiverName");
+	public List <Message> readAUserAllMessages(String receiverName){
+		Query q = em.createQuery("select m from Message m where m.receiverName = :receiverName");
 		q.setParameter("receiverName",receiverName);
-        	List <Object[]> results = q.getResultList();
+        	List <Message> results = q.getResultList();
 
 		Query q2 = em.createQuery("update Message m set m.alreadyRead = :alreadyRead where m.alreadyRead = :alreadyRead2 and m.receiverName = :receiverName");
 		q2.setParameter("alreadyRead",true);

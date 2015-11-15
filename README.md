@@ -38,11 +38,13 @@
 	7.6 l'utilisateur supprime les messages lu <br/>
 	7.7 l'utilisateur X consulte ses messages non lu <br/>
 
-
 	7.8 suppression de plusieurs utilisateurs <br/>
 	7.9 ajout d'un utilisateur <br/>
 	7.10 récupérer la liste de tous les utilisateurs <br/>
 	7.11 récupérer la liste de tous les utilisateurs avec leur droits R/W sur les news <br/>
+	7.12 l'utilisateur X envoie des news a la box de test <br/>
+	7.13 lecture des news de la box de test <br/>
+	7.14 suppression des news <br/>
 
 
 
@@ -65,3 +67,13 @@
 	 	8.b.3 List<Object[]> lookupAllUsers() <br/>
 	 	8.b.4 Object lookupAUserRights(String userName) <br/>
 	 	8.b.5 void updateAUserRigts(long id,String userName,boolean readRightGroup,boolean writeRightGroup) <br/>
+
+
+	8.c NewsBoxManagerInterface newsBoxManagerInterface = new NewsBoxManagerInterface ()
+
+	 8.c.1 void sendNewsBox(long idBox,String userName,String news) ;
+	 8.c.2 void removeNewsBox(long id) ;
+	 8.c.3 List<NewsBox> lookupAllNewsBox(long idBox) ;
+	 8.c.4 List<NewsBox> lookupNewsBoxNotRead(long idBox) ;
+
+

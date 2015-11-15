@@ -32,17 +32,17 @@ public class UsersDirectory implements UsersDirectoryInterface{
 
 
 
-	public List<Object[]> lookupAllUsers() {
-		Query q = em.createQuery("select u.id, u.userName from FinalUser u");
-        	List <Object[]> results = q.getResultList();
+	public List<FinalUser> lookupAllUsers() {
+		Query q = em.createQuery("select u from FinalUser u");
+        	List <FinalUser> results = q.getResultList();
 		return results ;
 		}
 
 
-	public Object lookupAUserRights(String userName) {
+	public FinalUser lookupAUserRights(String userName) {
 		Query q = em.createQuery("select u from FinalUser u where u.userName = :userName");
 		q.setParameter("userName",userName);
-        	Object result = q.getSingleResult();
+        	FinalUser result = (FinalUser) q.getSingleResult();
 		return result ;
 		}
 

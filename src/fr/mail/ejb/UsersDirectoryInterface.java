@@ -10,8 +10,8 @@ public interface UsersDirectoryInterface {
 
 	public void addUser(String userName) ;
 	public void removeUser(long id) ;
-	public List<Object[]> lookupAllUsers() ;
-	public Object lookupAUserRights(String userName) ;
+	public List<FinalUser> lookupAllUsers() ;
+	public FinalUser lookupAUserRights(String userName) ;
 	public void updateAUserRigts(long id,String userName,boolean readRightGroup,boolean writeRightGroup) ;
 	public void deleteAllUser();
 }

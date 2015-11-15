@@ -20,6 +20,9 @@ public class Box implements Serializable{
 
 	@OneToMany(mappedBy="box")
 	private Collection <Message> messages;
+
+	@OneToMany(mappedBy="box")
+	private Collection <NewsBox> newsBox;
 	
 		
 	
@@ -69,6 +72,15 @@ public class Box implements Serializable{
 
 	public Collection <Message> getMessages(){
 		return this.messages;
+	}
+
+
+	public void setNewsBox(Collection <NewsBox> newsBox){
+		this.newsBox = newsBox;
+	}
+
+	public Collection <NewsBox> getNewsBox(){
+		return this.newsBox;
 	}
 	
 
